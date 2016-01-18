@@ -1,0 +1,89 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+## History Stuff
+## =============
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# number of commands in 'history'
+#HISTSIZE=5000
+HISTSIZE=-1
+# number of lines to keep in history file
+#HISTFILESIZE=10000
+HISTFILESIZE=-1
+
+
+## Environment Variables, etc.
+## ===========================
+
+export VISUAL="vim"
+
+# Add Ruby Gem binaries to path
+PATH=${HOME}/.gem/ruby/2.2.0/bin:${PATH}
+# Add personal bin directory to path
+PATH=${HOME}/bin:${PATH}
+# Finally, export path
+export PATH
+
+
+## Aliases
+## =======
+
+#test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+alias ls="ls -G"
+alias grep="grep --color=auto"
+alias rgrep="rgrep --color=auto"
+
+alias ll="ls -lahF"
+alias la="ls -A"
+alias l="ls -CF"
+alias cl="clear"
+
+alias gs="git status"
+alias gg="git grep"
+alias gum="git checkout master && git pull origin master"
+
+
+## Miscellaneous
+## =============
+
+# Enable Git & Leiningen completions
+if [[ $(uname) == "Darwin" ]]; then
+    source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+    source $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
+elif [[ $(uname) == "Linux" ]]; then
+    source /usr/share/bash-completion/completions/git
+    source /usr/share/git/git-prompt.sh
+    source /usr/share/bash-completion/completions/lein
+fi
+
+# Colorize command prompt
+color_prompt=yes
+
+# Customize format of shell prompt display
+source $HOME/.bash/prompt
+
+
+## Machine-Specific Settings
+## =========================
+
+HOST_SETTINGS="${HOME}/.bash/host_$(hostname | cut -d'.' -f1)"
+PRIVATE_HOST_SETTINGS="${HOST_SETTINGS}.private"
+
+for SETTINGS in $HOST_SETTINGS $PRIVATE_HOST_SETTINGS; do
+    if [[ -f $SETTINGS ]]; then
+        source $SETTINGS
+    fi
+done

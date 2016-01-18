@@ -1,0 +1,23 @@
+[user]
+    # TODO: These values should be different for work machine
+	name = Nick Moorman
+	email = nick@nickmoorman.com
+[core]
+	editor = vim
+[alias]
+	ci = commit
+	stat = status
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+[github]
+    user = nickmoorman
+    # TODO: Include github token
+[color]
+	status = auto
+	diff = auto
+	grep = auto
+	ui = true
+[push]
+	default = current
+[pull]
+	default = current

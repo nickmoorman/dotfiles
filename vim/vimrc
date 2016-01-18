@@ -1,0 +1,5 @@
+source ~/.vim/conf/base.vim
+source ~/.vim/conf/vundle.vim
+source ~/.vim/conf/colors.vim
+source ~/.vim/conf/nerdtree.vim
+

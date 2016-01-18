@@ -1,0 +1,7 @@
+#
+# ~/.bash_profile
+#
+# Simply sources .bashrc to keep configs more tidy
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
