@@ -42,6 +42,10 @@ Plugin 'chriskempson/base16'
 Plugin 'chriskempson/base16-vim'
 Plugin 'altercation/vim-colors-solarized'
 
+" Syntax highlighting
+Plugin 'evidens/vim-twig'
+Plugin 'leafgarland/typescript-vim'
+
 " Clojure plugins
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
@@ -49,7 +53,9 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 "Plugin 'vim-scripts/paredit.vim'
 
+" Miscellaneous plugins
 Plugin 'suan/vim-instant-markdown'
+Plugin 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
