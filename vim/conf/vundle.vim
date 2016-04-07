@@ -45,6 +45,8 @@ Plugin 'altercation/vim-colors-solarized'
 " Syntax highlighting
 Plugin 'evidens/vim-twig'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
 
 " Clojure plugins
 Plugin 'tpope/vim-fireplace'
@@ -56,6 +58,7 @@ Plugin 'guns/vim-clojure-highlight'
 " Miscellaneous plugins
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-obsession'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
