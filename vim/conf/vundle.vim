@@ -47,6 +47,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'derekwyatt/vim-scala'
 
 " Clojure plugins
 Plugin 'tpope/vim-fireplace'
