@@ -18,10 +18,10 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # number of commands in 'history'
 #HISTSIZE=5000
-HISTSIZE=-1
+HISTSIZE=50000
 # number of lines to keep in history file
 #HISTFILESIZE=10000
-HISTFILESIZE=-1
+HISTFILESIZE=50000
 
 
 ## Environment Variables, etc.
@@ -35,6 +35,8 @@ PATH=${HOME}/.gem/ruby/2.2.0/bin:${PATH}
 PATH=${HOME}/bin:${PATH}
 # Finally, export path
 export PATH
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 ## Aliases
@@ -54,6 +56,24 @@ alias gs="git status"
 alias gg="git grep"
 alias gum="git checkout master && git pull origin master"
 
+alias dc="docker-compose"
+alias dm="docker-machine"
+
+alias kctl="kubectl"
+alias kctl-ks="kubectl --namespace=kube-system"
+alias fctl="fleetctl"
+
+## Functions
+## =======
+mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
+dmenv() {
+    eval $(dm env $1)
+}
+
 
 ## Miscellaneous
 ## =============
@@ -63,6 +83,8 @@ if [[ $(uname) == "Darwin" ]]; then
     source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
     source $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
+    # TODO: See if this also applies to Linux
+    complete -C aws_completer aws
 elif [[ $(uname) == "Linux" ]]; then
     source /usr/share/bash-completion/completions/git
     source /usr/share/git/git-prompt.sh
@@ -74,7 +96,6 @@ color_prompt=yes
 
 # Customize format of shell prompt display
 source $HOME/.bash/prompt
-
 
 ## Machine-Specific Settings
 ## =========================
