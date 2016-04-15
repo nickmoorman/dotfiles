@@ -2,7 +2,9 @@
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd w
 " Close NERDTree with q instead of qall
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" (NOTE: This was changed from the previous method in:
+" https://github.com/scrooloose/nerdtree/commit/5c202747616e0d614f8de9117162fcf8e8a4c27e
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDShutUp=1
 let NERDTreeShowLineNumbers=0
 let NERDTreeMinimalUI=1
