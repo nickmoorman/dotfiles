@@ -48,7 +48,7 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
                         " 50 lines of registers.
 
 " Allow backspacing over everything in insert mode.
-"set backspace=indent,eol,start
+set backspace=indent,eol,start
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!

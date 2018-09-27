@@ -38,6 +38,8 @@ export PATH
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.bash/history/$(date "+%Y-%m-%d").log; fi'
 
 ## Aliases
 ## =======
@@ -54,7 +56,9 @@ alias cl="clear"
 
 alias gs="git status"
 alias gg="git grep"
-alias gum="git checkout master && git pull origin master"
+alias gum="git checkout master && git pull origin"
+alias gbd="git branch -d"
+alias gcpd="gum && gbd"
 
 alias dc="docker-compose"
 alias dm="docker-machine"
@@ -108,3 +112,4 @@ for SETTINGS in $HOST_SETTINGS $PRIVATE_HOST_SETTINGS; do
         source $SETTINGS
     fi
 done
+
