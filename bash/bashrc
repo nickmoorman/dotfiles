@@ -60,6 +60,8 @@ alias gum="git checkout master && git pull origin"
 alias gbd="git branch -d"
 alias gcpd="gum && gbd"
 
+alias vinstall="vim +PlugInstall +qall"
+
 alias dc="docker-compose"
 alias dm="docker-machine"
 
@@ -94,6 +96,12 @@ elif [[ $(uname) == "Linux" ]]; then
     source /usr/share/git/git-prompt.sh
     source /usr/share/bash-completion/completions/lein
 fi
+
+# Tab completion
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#  . $(brew --prefix)/etc/bash_completion
+#fi
+
 
 # Colorize command prompt
 color_prompt=yes

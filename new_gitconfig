@@ -1,0 +1,87 @@
+[push]
+  # Safety first! Only `git push` the current branch by default instead of all branches that exist on the remote
+  default = upstream
+[user]
+  name = FIRST_LAST
+  email = EMAIL_ON_GITHUB
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow 
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[core]
+  excludesfile = HOME_DIR/.gitignore
+  pager = cat # Less annoying than `more`
+  whitespace = trailing-space,space-before-tab
+[advice]
+  statusHints = false # More concise output
+[diff]
+  mnemonicprefix = true
+[alias]
+  # Use `git ls` as a usable-by-default `git log`
+  unadd = reset HEAD
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+
+  up = pull origin master
+  la = "!git config -l | grep alias | cut -c 7-"
+  st = status
+  cl = clean -fdX
+  cn = clone
+  ci = commit
+  cm = commit -am
+  co = checkout
+  b = branch -vv
+  d = diff --word-diff
+  dc = diff --cached
+  rb = rebase
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  ls = log --pretty=my-oneline --decorate --graph --date=relative -25
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  filelog = log -u
+  fl = log -u
+  dl = "!git ll -1"
+  dlc = diff --cached HEAD^
+  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+  sh = show --name-status
+  find = "!git ls-files | grep -i"
+  hb = "!hub browse -- find/master"
+  # open file in github
+  hf = "!f() { hub browse -- blob/master/$(git find $@ | head -n 1); }; f"
+  editor = config --get core.editor
+  op = "!f() { $(git editor) $(git find \"$@\"); }; f"
+  # open merge conflicts (good for rebase/cherry-pick/merge too)
+  mop = "!f() { $(git editor) $(git diff --name-only --diff-filter=U); }; f"
+[pretty]
+  # Used by `git ls` (above)
+  my-oneline = %C(yellow)%h%C(reset) %C(magenta)%cd%C(reset) %C(bold blue)%an%C(reset) %s%C(bold yellow)%d%C(reset)
+[merge]
+  stat = true
+
+[credential]
+  helper = osxkeychain

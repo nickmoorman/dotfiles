@@ -1,0 +1,115 @@
+syntax on            " enable syntax highlighting
+filetype plugin indent on    
+
+set nu               " show line numbers
+
+set showcmd
+set showmatch        " when hovering over a (){}[], highlights matching bracket
+set virtualedit=all  " lets you move the cursor around anywhere regardless of whitespace
+set mouse=a          " lets you click on stuff in a terminal
+" https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
+endfunction
+
+set laststatus=2
+set esckeys       " Allow cursor keys in insert mode
+set backspace=indent,eol,start
+set softtabstop=4 " Tabs are 4 spaces
+set expandtab     " Never insert literal tabs, always insert spaces
+set tabstop=4     " Display actual tabs with normal 4-col width
+set shiftwidth=4  " Make << and >> line shifting agree with softtabstop
+set smartindent
+set autoindent
+set cindent
+
+set nocompatible  " Use vim defaults instead of vi defaults (much better!)
+set encoding=utf8 " Treat all files as utf8
+
+set hlsearch      " Search: Highlight matches
+set incsearch     " Search: Match as you type
+set ignorecase    " Search: Ignore case
+" Center screen while traversing matches after search
+nnoremap n nzz    
+
+set clipboard=unnamed   " Use the OS clipboard by default (on versions compiled with `+clipboard`)
+
+function! GitBranch()
+  let branch = system("cd $(dirname " . bufname("%") . ") && git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+  if branch != ''
+    return '(' . substitute(branch, '\n', '', 'g') . ')'
+  en  
+  return ''
+endfunction
+set statusline=%F\ %{GitBranch()}   " For an open file, show full path and git branch
+
+let mapleader = "\<Space>"  " Set leader to space key for extra key bindings
+
+" Restore the last line we were working on and also marks
+set viminfo='10,\"100,:20,%,n~/.viminfo
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" Automatic commands
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+endif
+
+set nocompatible              " be iMproved, required
+
+
+" Plugins (use single quotes for Plug)
+" Run `vim +PlugInstall +qall` to install all plugins (alias to vinstall)
+call plug#begin('~/.vim/plugged')
+
+" fzf (fuzzy find) integration
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+nnoremap <C-p> :GitFiles<cr>
+nnoremap <C-b> :Buffers<cr>
+nnoremap <C-f> :Files<cr>
+
+" tab to auto-complete and select (for both YCM and snippets to work)
+Plug 'ervandew/supertab'
+
+" auto-completion (this is a fat plugin)
+Plug 'Valloric/YouCompleteMe'
+
+" code snippets engine and snippets repo
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" make YCM compatible with UltiSnips (using supertab) to select a snippet
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for jumping around sections of a snippet
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" let g:UltiSnipsEditSplit="vertical"
+
+" comments (single lines)
+Plug 'tpope/vim-commentary'
+nmap <Leader>c <Plug>Commentary
+vmap <Leader>c <Plug>Commentary
+nmap <Leader>cc <Plug>CommentaryLine
+
+" buffer manager
+Plug 'fholgado/minibufexpl.vim'
+nnoremap <C-j> <Esc>:bn<CR>
+nnoremap <C-k> <Esc>:bp<CR>
+
+" scala syntax highlighting (can use syntastic for others)
+Plug 'derekwyatt/vim-scala'
+
+call plug#end()

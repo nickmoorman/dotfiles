@@ -1,0 +1,7 @@
+--ignore-dir=target
+--ignore-dir=.idea/
+--ignore-dir=.idea_modules/
+--color
+--sort-files
+--type-add=conf=.conf
+--type-add=routes=.routes
