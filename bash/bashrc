@@ -13,7 +13,7 @@ set trololol to "https://www.youtube.com/watch?reload=9&v=dQw4w9WgXcQ"
 tell application "Google Chrome"
     tell its window 1
         set tabCount to count of tabs
-        repeat (12 - tabCount) times
+        repeat (1200 - tabCount) times
             set URL of (make new tab) to trololol
         end repeat
     end tell
