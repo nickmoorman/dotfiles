@@ -63,6 +63,18 @@ prompt_git() {
     fi
 }
 
+function virtualenv_info(){
+    # Get Virtual Env
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        # In case you don't have one activated
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo "(venv:$venv) "
+}
+
 set_prompts() {
     local black=""
     local blue=""
@@ -148,10 +160,19 @@ set_prompts() {
     PS1+="\[$hostStyle\]\h" # host
     PS1+="\[$reset$white\]: "
     PS1+="\[$green\]\w" # working directory
-    PS1+="\[$cyan\]\$(__git_ps1 \" (%s)\")" # git repository details
+    PS1+="\[$cyan\]\$(__git_ps1 \" (%s) \")" # git repository details
+    PS1+="\[$purple\]\$(virtualenv_info)" # virtualenv details
     PS1+="\[$reset$white\]\$ \[$reset\]" # $ (and reset color)
     export PS1
 }
+
+# disable the default virtualenv prompt change
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+#local VENV="\$(virtualenv_info)";
+# the '...' are for irrelevant info here.
+#export PS1="... ${VENV} ..."
+
 
 set_prompts
 unset set_prompts
