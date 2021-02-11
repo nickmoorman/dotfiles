@@ -49,6 +49,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'udalov/kotlin-vim'
+"Plugin 'lepture/vim-jinja'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " Clojure plugins
 Plugin 'tpope/vim-fireplace'
@@ -58,9 +60,11 @@ Plugin 'guns/vim-clojure-highlight'
 "Plugin 'vim-scripts/paredit.vim'
 
 " Miscellaneous plugins
-Plugin 'suan/vim-instant-markdown'
+"Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-obsession'
 Plugin 'fatih/vim-go'
+Plugin 'hashivim/vim-terraform'
+let g:go_version_warning = 0
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
