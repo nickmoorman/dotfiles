@@ -31,6 +31,8 @@ export VISUAL="vim"
 
 # Add Ruby Gem binaries to path
 PATH=${HOME}/.gem/ruby/2.2.0/bin:${PATH}
+# Homebrew Ruby
+PATH=/usr/local/opt/ruby/bin:$PATH
 # Add personal bin directory to path
 PATH=${HOME}/bin:${PATH}
 # Finally, export path
