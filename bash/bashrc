@@ -86,7 +86,7 @@ dmenv() {
 if [[ $(uname) == "Darwin" ]]; then
     source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
-    source $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
+    #source $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
     # TODO: See if this also applies to Linux
     complete -C aws_completer aws
 elif [[ $(uname) == "Linux" ]]; then
