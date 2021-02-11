@@ -36,8 +36,6 @@ PATH=${HOME}/bin:${PATH}
 # Finally, export path
 export PATH
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
 export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.bash/history/$(date "+%Y-%m-%d").log; fi'
 
