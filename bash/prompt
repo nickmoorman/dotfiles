@@ -159,8 +159,8 @@ set_prompts() {
     PS1+="\[$reset$white\]@"
     PS1+="\[$hostStyle\]\h" # host
     PS1+="\[$reset$white\]: "
-    PS1+="\[$green\]\w" # working directory
-    PS1+="\[$cyan\]\$(__git_ps1 \" (%s) \")" # git repository details
+    PS1+="\[$green\]\w " # working directory
+    PS1+="\[$cyan\]\$(__git_ps1 \"(%s) \")" # git repository details
     PS1+="\[$purple\]\$(virtualenv_info)" # virtualenv details
     PS1+="\[$reset$white\]\$ \[$reset\]" # $ (and reset color)
     export PS1
