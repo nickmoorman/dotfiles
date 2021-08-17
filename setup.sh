@@ -15,13 +15,14 @@ ln -s ${CUR_DIR}/vim/conf/base.vim ${HOME}/.vim/conf/base.vim
 ln -s ${CUR_DIR}/vim/conf/colors.vim ${HOME}/.vim/conf/colors.vim
 ln -s ${CUR_DIR}/vim/conf/nerdtree.vim ${HOME}/.vim/conf/nerdtree.vim
 ln -s ${CUR_DIR}/vim/conf/vundle.vim ${HOME}/.vim/conf/vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # tmux
-mkdir -p ${HOME}/.tmux
+mkdir -p ${HOME}/.tmux/conf
 ln -s ${CUR_DIR}/tmux/tmux.conf ${HOME}/.tmux.conf
-ln -s ${CUR_DIR}/tmux/conf/base.conf ${HOME}/.tmux/base.conf
-ln -s ${CUR_DIR}/tmux/conf/screen-bindings.conf ${HOME}/.tmux/screen-bindings.conf
-ln -s ${CUR_DIR}/tmux/conf/tpm.conf ${HOME}/.tmux/tpm.conf
+ln -s ${CUR_DIR}/tmux/conf/base.conf ${HOME}/.tmux/conf/base.conf
+ln -s ${CUR_DIR}/tmux/conf/screen-bindings.conf ${HOME}/.tmux/conf/screen-bindings.conf
+ln -s ${CUR_DIR}/tmux/conf/tpm.conf ${HOME}/.tmux/conf/tpm.conf
 
 # TODO: ack
 
