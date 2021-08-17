@@ -51,6 +51,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'udalov/kotlin-vim'
 "Plugin 'lepture/vim-jinja'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'google/vim-jsonnet'
 
 " Clojure plugins
 Plugin 'tpope/vim-fireplace'
