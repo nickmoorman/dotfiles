@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO: Don't override anything!
-
 CUR_DIR=$(pwd)
 
 # Bash
