@@ -4,12 +4,19 @@
 
 CUR_DIR=$(pwd)
 
+# Bash
 mkdir -p ${HOME}/.bash/history
-mkdir -p ${HOME}/.vim/conf
-
 ln -s ${CUR_DIR}/bash/bashrc ${HOME}/.bashrc
 ln -s ${CUR_DIR}/bash/bash_profile ${HOME}/.bash_profile
 ln -s ${CUR_DIR}/bash/prompt ${HOME}/.bash/prompt
+
+# Vim
+mkdir -p ${HOME}/.vim/conf
+ln -s ${CUR_DIR}/vim/vimrc ${HOME}/.vimrc
+ln -s ${CUR_DIR}/vim/conf/base.vim ${HOME}/.vim/conf/base.vim
+ln -s ${CUR_DIR}/vim/conf/colors.vim ${HOME}/.vim/conf/colors.vim
+ln -s ${CUR_DIR}/vim/conf/nerdtree.vim ${HOME}/.vim/conf/nerdtree.vim
+ln -s ${CUR_DIR}/vim/conf/vundle.vim ${HOME}/.vim/conf/vundle.vim
 
 # TODO: ack
 
@@ -20,10 +27,4 @@ ln -s ${CUR_DIR}/gitconfig ${HOME}/.gitconfig
 ln -s ${CUR_DIR}/rsync-excludes ${HOME}/.rsync-excludes
 
 # TODO: tmux
-
-ln -s ${CUR_DIR}/vim/vimrc ${HOME}/.vimrc
-ln -s ${CUR_DIR}/vim/conf/base.vim ${HOME}/.vim/conf/base.vim
-ln -s ${CUR_DIR}/vim/conf/colors.vim ${HOME}/.vim/conf/colors.vim
-ln -s ${CUR_DIR}/vim/conf/nerdtree.vim ${HOME}/.vim/conf/nerdtree.vim
-ln -s ${CUR_DIR}/vim/conf/vundle.vim ${HOME}/.vim/conf/vundle.vim
 
