@@ -23,6 +23,10 @@ ln -s ${CUR_DIR}/tmux/tmux.conf ${HOME}/.tmux.conf
 ln -s ${CUR_DIR}/tmux/conf/base.conf ${HOME}/.tmux/conf/base.conf
 ln -s ${CUR_DIR}/tmux/conf/screen-bindings.conf ${HOME}/.tmux/conf/screen-bindings.conf
 ln -s ${CUR_DIR}/tmux/conf/tpm.conf ${HOME}/.tmux/conf/tpm.conf
+# See: https://superuser.com/a/454827
+#brew install reattach-to-user-namespace
+# See: https://github.com/tmux-plugins/tpm/issues/67#issuecomment-464260747
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # TODO: ack
 
