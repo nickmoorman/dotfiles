@@ -2,6 +2,17 @@
 
 CUR_DIR=$(pwd)
 
+# Back up existing stuff!!
+# TODO: Check relevant subdirectories too
+BKUPS=${HOME}/.dotfiles_backups
+mkdir ${BKUPS}
+for f in .bashrc .bash_profile .vimrc .tmux.conf .curlrc .gitconfig .rsync-excludes; do
+    if [[ -e ${HOME}/${f} ]]; then
+        echo "Moving ${HOME}/${f} to ${BKUPS}..."
+        mv ${HOME}/${f} ${BKUPS}/${f}
+    fi
+done
+
 # Bash
 mkdir -p ${HOME}/.bash/history
 ln -s ${CUR_DIR}/bash/bashrc ${HOME}/.bashrc
