@@ -27,6 +27,7 @@ ln -s ${CUR_DIR}/vim/conf/colors.vim ${HOME}/.vim/conf/colors.vim
 ln -s ${CUR_DIR}/vim/conf/nerdtree.vim ${HOME}/.vim/conf/nerdtree.vim
 ln -s ${CUR_DIR}/vim/conf/vundle.vim ${HOME}/.vim/conf/vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 # tmux
 mkdir -p ${HOME}/.tmux/conf
