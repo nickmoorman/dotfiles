@@ -84,15 +84,20 @@ dmenv() {
 
 # Enable Git & Leiningen completions
 if [[ $(uname) == "Darwin" ]]; then
-    source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
-    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+    for c in $(brew --prefix)/etc/bash_completion.d/git-completion.bash $(brew --prefix)/etc/bash_completion.d/git-prompt.sh; do
+        if [[ -f $c ]]; then
+            source $c
+        fi
+    done
     #source $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
     # TODO: See if this also applies to Linux
     complete -C aws_completer aws
 elif [[ $(uname) == "Linux" ]]; then
-    source /usr/share/bash-completion/completions/git
-    source /usr/share/git/git-prompt.sh
-    source /usr/share/bash-completion/completions/lein
+    for c in /usr/share/bash-completion/completions/git /usr/share/git/git-prompt.sh /usr/share/bash-completion/completions/lein; do
+        if [[ -f $c ]]; then
+            source $c
+        fi
+    done
 fi
 
 # Colorize command prompt
