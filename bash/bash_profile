@@ -5,3 +5,20 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+## Machine-Specific Settings
+## =========================
+
+# TODO: Make this reusable to share between profile & rc
+if [[ -f ${HOME}/.bash/machineid ]]; then
+    MACHINE_ID=$(cat ${HOME}/.bash/machineid)
+    HOST_SETTINGS="${HOME}/.bash/host_${MACHINE_ID}_profile"
+    PRIVATE_HOST_SETTINGS="${HOST_SETTINGS}.private"
+
+    for SETTINGS in $HOST_SETTINGS $PRIVATE_HOST_SETTINGS; do
+        if [[ -f $SETTINGS ]]; then
+            source $SETTINGS
+        fi
+    done
+fi
+
