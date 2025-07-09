@@ -1,0 +1,22 @@
+eval "$(starship init bash)"
+eval "$(direnv hook bash)"
+eval "$(zoxide init bash)"
+
+export SSH_AUTH_SOCK=$HOME/.ssh/socket/ssh-agent.sock
+
+export PATH=$PATH:$HOME/.krew/bin
+
+export GPG_TTY=$(tty)
+
+export EDITOR=vim
+
+export ASDF_DATA_DIR=/etc/asdf
+
+alias k=kubectl
+alias t=terraform
+
+. "/usr/bin/asdf/asdf.sh"
+
+# Created by `pipx` on 2025-06-11 19:59:23
+export PATH="$PATH:/home/user/.local/bin"
+

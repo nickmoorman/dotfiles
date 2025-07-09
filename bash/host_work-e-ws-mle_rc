@@ -1,0 +1,5 @@
+alias egrep="egrep --color=auto"
+
+# Created by `pipx` on 2025-06-11 19:59:23
+export PATH="$PATH:/home/user/.local/bin"
+
