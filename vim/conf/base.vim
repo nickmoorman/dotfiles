@@ -355,6 +355,7 @@ command! SmallerFont call SmallerFont()
 set shiftwidth=4
 set expandtab
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+set number " show line numbers
 
 "" From personal Mac
 "set mouse=a
