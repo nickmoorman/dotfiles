@@ -1,0 +1,3 @@
+# Suuuuuuper basic to get me started...
+PS1="%F{orange}%n%f@%F{yellow}%m%f: %F{green}%~%f $ "
+

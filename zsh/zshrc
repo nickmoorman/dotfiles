@@ -1,0 +1,89 @@
+#
+# ~/.zshrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+## History Stuff
+## =============
+
+# Append to history file rather than replacing it
+setopt APPEND_HISTORY
+# Include start timestamp & duration in history entries
+setopt EXTENDED_HISTORY
+# Ignore dupes when searching history via line editor
+setopt HIST_FIND_NO_DUPS
+# Do not add lines to history file if they begin with a space
+setopt HIST_IGNORE_SPACE
+# Maintain virtually unlimited history
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
+
+# Save history to custom dated files
+# (adapted from: https://spin.atomicobject.com/2016/05/28/log-bash-history/)
+PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history -1)" >> ~/.zsh/history/$(date "+%Y-%m-%d").log; fi'
+precmd() { eval "$PROMPT_COMMAND" }
+
+## Environment Variables, etc.
+## ===========================
+
+export VISUAL="vim"
+
+# Add personal bin directory to path
+PATH=${HOME}/bin:${PATH}
+# Finally, export path
+export PATH
+
+## Aliases
+## =======
+
+alias ls="ls -G"
+alias grep="grep --color=auto"
+alias rgrep="rgrep --color=auto"
+
+alias ll="ls -lahF"
+alias la="ls -A"
+alias l="ls -CF"
+alias cl="clear"
+
+alias gs="git status"
+alias gg="git grep"
+alias gum="git checkout main && git pull origin"
+alias gbd="git branch -d"
+alias gcpd="gum && gbd"
+
+alias dc="docker-compose"
+alias dm="docker-machine"
+
+alias kctl="kubectl"
+alias kctl-ks="kubectl --namespace=kube-system"
+alias fctl="fleetctl"
+
+## Functions
+## =======
+mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
+# Customize format of shell prompt display
+source $HOME/.zsh/prompt
+
+## Machine-Specific Settings
+## =========================
+
+# TODO: Make this reusable to share between profile & rc
+if [[ -f ${HOME}/.zsh/machineid ]]; then
+    MACHINE_ID=$(cat ${HOME}/.zsh/machineid)
+    HOST_SETTINGS="${HOME}/.zsh/host_${MACHINE_ID}_rc"
+    PRIVATE_HOST_SETTINGS="${HOST_SETTINGS}.private"
+
+    for SETTINGS in $HOST_SETTINGS $PRIVATE_HOST_SETTINGS; do
+        if [[ -f $SETTINGS ]]; then
+            source $SETTINGS
+        fi
+    done
+fi
+
+
