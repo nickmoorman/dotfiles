@@ -3,6 +3,15 @@
 #
 
 # If not running interactively, don't do anything
+# Explanation (from https://stackoverflow.com/a/42757277):
+# $- prints the current set of options in the current shell
+# For example, `himBH` means:
+# - h (hashall) - locate and remember (hash) commands as they are looked up for execution
+# - i (interactive) - interactive shell session
+# - m (monitor) - job control is enabled
+# - B (braceexpand) - brace expansion is enabled
+# - H (histexpand) - history expansion is enabled
+# See more: https://tldp.org/LDP/abs/html/options.html
 [[ $- != *i* ]] && return
 
 ## History Stuff
