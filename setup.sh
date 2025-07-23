@@ -6,19 +6,15 @@ CUR_DIR=$(pwd)
 # TODO: Check relevant subdirectories too
 BKUPS=${HOME}/.dotfiles_backups
 mkdir ${BKUPS}
-for f in .bashrc .bash_profile .vimrc .tmux.conf .curlrc .gitconfig .rsync-excludes; do
+for f in .vimrc .tmux.conf .curlrc .gitconfig .rsync-excludes; do
     if [[ -e ${HOME}/${f} ]]; then
         echo "Moving ${HOME}/${f} to ${BKUPS}..."
         mv ${HOME}/${f} ${BKUPS}/${f}
     fi
 done
 
-# Bash
-echo "Setting up Bash configs..."
-mkdir -p ${HOME}/.bash/history
-ln -s ${CUR_DIR}/bash/bashrc ${HOME}/.bashrc
-ln -s ${CUR_DIR}/bash/bash_profile ${HOME}/.bash_profile
-ln -s ${CUR_DIR}/bash/prompt ${HOME}/.bash/prompt
+# Shells
+./setup_shells.sh
 
 # Vim
 echo "Setting up Vim configs..."
